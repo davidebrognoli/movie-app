@@ -12,7 +12,7 @@
   <p v-if="loading">Loading...</p>
   <p v-if="error">{{ error }}</p>
   <div class="results" v-if="!loading && !error">
-    <Movie :movie="movie" v-for="movie of movies" :key="movie.id"/>
+    <Movie :movie="movie" v-for="movie of movies" :key="movie.id" />
   </div>
 </template>
 
@@ -20,7 +20,6 @@
 import Movie from "../components/Movie.vue";
 
 export default {
-  props: ["collection", "wantlist"],
   data() {
     return {
       title: "",

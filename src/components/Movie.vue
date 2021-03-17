@@ -9,10 +9,14 @@
     <div
       class="movie-missing-img"
       v-if="!movie.Poster || movie.Poster === 'N/A'"
-    >N/A</div>
+    >
+      N/A
+    </div>
     <div class="content">
       <h2 class="title">
-        {{ movie.Title }} <span class="year">({{ movie.Year }})</span>
+        <router-link :to="`/movie/${movie.imdbID}`">
+          {{ movie.Title }} <span class="year">({{ movie.Year }})</span>
+        </router-link>
       </h2>
       <div class="actions">
         <button alt="wantlist" class="button">
@@ -65,6 +69,11 @@ export default {
 .title span {
   font-weight: normal;
   font-size: 16px;
+}
+
+.title a {
+  color: #000;
+  text-decoration: none;
 }
 
 .button {

@@ -1,6 +1,6 @@
 <template>
   <header class="header">
-    <h1 class="title">My Movies App</h1>
+    <h1 class="title"><router-link to="/">My Movies App</router-link></h1>
     <div class="actions">
       <button alt="wantlist" class="button">
         <span>{{ wCounter }}</span>
@@ -38,6 +38,11 @@ export default {
 .title {
   grid-area: title;
   text-align: center;
+}
+
+.title a {
+  color: #000;
+  text-decoration: none;
 }
 
 .actions {

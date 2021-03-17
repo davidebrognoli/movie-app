@@ -1,19 +1,16 @@
 <template>
   <Header :c-counter="collection.length" :w-counter="wantlist.length" />
   <div class="container">
-    <Homepage :collection="collection" v-bind:wantlist="wantlist" />
+    <router-view />
   </div>
 </template>
 
 <script>
 import Header from "./components/Header.vue";
-import Homepage from "./features/Homepage.vue";
-
 export default {
   name: "App",
   components: {
-    Header,
-    Homepage
+    Header
   },
   data() {
     return {
