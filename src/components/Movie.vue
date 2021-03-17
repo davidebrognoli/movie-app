@@ -19,12 +19,20 @@
         </router-link>
       </h2>
       <div class="actions">
-        <button alt="wantlist" class="button">
+        <button
+          alt="wantlist"
+          class="button"
+          @click="handleToggleWantlist(movie.imdbID)"
+        >
           <svg class="icon icon-star">
             <use xlink:href="symbol-defs.svg#icon-star"></use>
           </svg>
         </button>
-        <button alt="collection" class="button">
+        <button
+          alt="collection"
+          class="button"
+          @click="handleToggleCollection(movie.imdbID)"
+        >
           <svg class="icon icon-eye">
             <use xlink:href="symbol-defs.svg#icon-eye"></use>
           </svg>
@@ -35,9 +43,23 @@
 </template>
 
 <script>
+import { useState } from "../store";
+
 export default {
   props: ["movie"],
-  name: "Movie"
+  name: "Movie",
+  methods: {
+    handleToggleWantlist(id) {
+      this.toggleWantList(id);
+    },
+    handleToggleCollection(id) {
+      this.toggleCollection(id);
+    }
+  },
+  setup() {
+    const { toggleWantList, toggleCollection, state } = useState();
+    return { toggleWantList, toggleCollection, state };
+  }
 };
 </script>
 

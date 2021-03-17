@@ -1,5 +1,8 @@
 <template>
-  <Header :c-counter="collection.length" :w-counter="wantlist.length" />
+  <Header
+    :c-counter="state.collection.length"
+    :w-counter="state.wantlist.length"
+  />
   <div class="container">
     <router-view />
   </div>
@@ -7,18 +10,17 @@
 
 <script>
 import Header from "./components/Header.vue";
+import { useState } from "./store";
+
 export default {
   name: "App",
   components: {
     Header
   },
-  data() {
-    return {
-      collection: [],
-      wantlist: []
-    };
-  },
-  methods: {}
+  setup() {
+    const { state } = useState();
+    return { state };
+  }
 };
 </script>
 
