@@ -22,6 +22,7 @@
         <button
           alt="wantlist"
           class="button"
+          :class="{ active: inWantlist }"
           @click="handleToggleWantlist(movie.imdbID)"
         >
           <svg class="icon icon-star">
@@ -31,6 +32,7 @@
         <button
           alt="collection"
           class="button"
+          :class="{ active: inCollection }"
           @click="handleToggleCollection(movie.imdbID)"
         >
           <svg class="icon icon-eye">
@@ -54,6 +56,14 @@ export default {
     },
     handleToggleCollection(id) {
       this.toggleCollection(id);
+    }
+  },
+  computed: {
+    inWantlist() {
+      return this.state && this.state.wantlist.includes(this.movie.imdbID);
+    },
+    inCollection() {
+      return this.state && this.state.collection.includes(this.movie.imdbID);
     }
   },
   setup() {
@@ -101,6 +111,15 @@ export default {
 .button {
   background-color: transparent;
   border: none;
+  cursor: pointer;
+}
+
+.button.active svg{
+  fill: blue;
+}
+
+.button:focus {
+  outline: none;
 }
 
 button svg {

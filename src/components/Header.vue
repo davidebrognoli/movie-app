@@ -27,6 +27,11 @@ export default {
 
 <style scoped>
 .header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  height: 80px;
+  background-color: #fff;
   display: grid;
   grid-template-columns: 200px minmax(0, 1fr) 200px;
   grid-template-areas: "left title right";
@@ -60,6 +65,11 @@ export default {
   cursor: pointer;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  width: 75px;
+  padding: 5px 10px;
+  border: 1px solid #000;
+  border-radius: 10px;
 }
 
 .button:focus {
@@ -67,10 +77,11 @@ export default {
 }
 
 .button span {
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .button svg {
-  width: 40px;
+  width: 25px;
+  height: 25px;
 }
 </style>

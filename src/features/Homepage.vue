@@ -1,14 +1,16 @@
 <template>
-  <form class="search" v-on:submit="submit($event)">
-    <input
-      type="text"
-      name="title"
-      id="title"
-      class="search-input"
-      v-model="title"
-    />
-    <button type="submit" class="search-button">Search</button>
-  </form>
+  <div class="search">
+    <form class="search-form" v-on:submit="submit($event)">
+      <input
+        type="text"
+        name="title"
+        id="title"
+        class="search-input"
+        v-model="title"
+      />
+      <button type="submit" class="search-button">Search</button>
+    </form>
+  </div>
   <p v-if="loading">Loading...</p>
   <p v-if="error">{{ error }}</p>
   <div class="results" v-if="!loading && !error">
@@ -46,7 +48,6 @@ export default {
           }
         })
         .then(data => {
-          console.log(data);
           this.movies = data.Search;
           this.loading = false;
         })
@@ -61,6 +62,14 @@ export default {
 
 <style scoped>
 .search {
+  top: 80px;
+  z-index: 1;
+  padding: 10px 0;
+  background-color: #fff;
+  position: sticky;
+}
+
+.search-form {
   width: 800px;
   margin: 0 auto;
   display: flex;
